@@ -26,6 +26,7 @@ Style/Documentation:
   Exclude:
     - 'app/**/*'
     - 'config/**/*'
+    - 'db/**/*'
 
 # Offense count: 33
 # Cop supports --auto-correct.
