@@ -17,8 +17,8 @@ module Api
       def authenticate_token_by_firebase
         authenticate_with_http_token do |token, _|
           return { data: verify_id_token(token) }
-          rescue => e
-            return { error: e.message }
+        rescue StandardError => e
+          return { error: e.message }
         end
         { error: 'token invalid' }
       end
@@ -51,7 +51,7 @@ module Api
           decoded_token = JWT.decode(token, key, verify, options)
         rescue JWT::ExpiredSignature => _e
           raise 'Firebase ID token has expired. Get a fresh token from your client app and try again.'
-        rescue => e
+        rescue StandardError => e
           raise "Firebase ID token has invalid signature. #{e.message}"
         end
 

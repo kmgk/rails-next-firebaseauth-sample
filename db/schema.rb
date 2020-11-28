@@ -10,14 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_071702) do
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "uid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["uid"], name: "index_users_on_uid", unique: true
+ActiveRecord::Schema.define(version: 20_201_128_091_104) do
+  create_table 'posts', force: :cascade do |t|
+    t.integer 'user_id'
+    t.string 'title', null: false
+    t.text 'body', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['user_id'], name: 'index_posts_on_user_id'
   end
 
+  create_table 'users', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'uid', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['uid'], name: 'index_users_on_uid', unique: true
+  end
 end

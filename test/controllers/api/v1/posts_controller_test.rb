@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Api
   module V1
-    class UsersControllerTest < ActionDispatch::IntegrationTest
+    class PostsControllerTest < ActionDispatch::IntegrationTest
       # test "the truth" do
       #   assert true
       # end

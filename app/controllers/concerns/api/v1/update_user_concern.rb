@@ -16,6 +16,12 @@ module Api
           render json: user.errors, status: :unprocessable_entity
         end
       end
+
+      private
+
+      def user_params
+        params.fetch(:user, {}).permit(:name)
+      end
     end
   end
 end
